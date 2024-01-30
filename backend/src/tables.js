@@ -4,11 +4,9 @@
 
 // Import the manager modules responsible for handling data operations on the tables
 const ProManager = require("./models/proManager");
+const ServiceManager = require("./models/serviceManager");
 
-const managers = [
-  ProManager,
-  // Add other managers here
-];
+const managers = [ProManager, ServiceManager];
 
 // Create an empty object to hold data managers for different tables
 const tables = {};

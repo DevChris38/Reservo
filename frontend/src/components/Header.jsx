@@ -1,11 +1,11 @@
 import styles from "./Header.module.css";
-import Button from "./Button";
+import ButtonReservo from "./ButtonReservo";
 
 function Header() {
   return (
     <div className={styles.headerContainer}>
-      <img src="./src/assets/reservo_img.png" alt="logo" />
-      <Button>Alice. M</Button>
+      <img src="/src/assets/reservo_img.png" alt="logo" />
+      <ButtonReservo>Alice. M</ButtonReservo>
     </div>
   );
 }

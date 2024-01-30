@@ -2,15 +2,15 @@ const express = require("express");
 
 const router = express.Router();
 
-/* ************************************************************************* */
-// Define Your API Routes Here
-/* ************************************************************************* */
-
-// Import itemControllers module for handling item-related operations
+// Import controllers modules
 const proControllers = require("./controllers/proControllers");
+const serviceControllers = require("./controllers/serviceControllers");
 
-// Route to get a specific item by ID
+// Route to get informations about a professional by its ID
 router.get("/pro/:id", proControllers.read);
+
+// Route to get all services purposed by a professional by its ID
+router.get("/service/:id", serviceControllers.read);
 
 /* ************************************************************************* */
 

@@ -1,18 +1,9 @@
-.homeContainer {
+.serviceContainer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-}
-
-.homeContainer__name {
-  text-align: center;
-}
-
-.homeContainer__image {
-  width: 100vw;
-  margin: 2vh 0;
 }
 
 .homeInformations {
@@ -24,8 +15,6 @@
 .homeInformations__nav {
   box-shadow: 0px 5px 10px 2px var(--color-shadow);
   margin-bottom: 2vh;
-  display: flex;
-  justify-content: space-between;
 }
 
 .homeInformations__nav > ul {
@@ -38,20 +27,9 @@
 .homeInformations__button {
   background-color: hsla(0, 0%, 100%, 100%);
   width: 30%;
-  border: none;
-  font-size: 1.2rem;
-  font-weight: 800;
-  padding-top: 2%;
 }
 
 .homeInformations__contained {
   margin: 2%;
   font-size: 1.2rem;
-}
-
-.rdvTitle {
-  font-size: 1.5rem;
-  font-weight: 900;
-  width: 90vw;
-  text-align: left;
 }
