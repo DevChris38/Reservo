@@ -12,6 +12,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/home",
+        loader: async () => {
+          return fetch(`${import.meta.env.VITE_BACKEND_URL}/api/pro/1.json`);
+        },
         element: <Home />,
       },
     ],

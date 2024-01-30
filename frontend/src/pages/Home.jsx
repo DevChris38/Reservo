@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Button from "../components/Button";
 import Infos from "../components/Infos";
 import Acces from "../components/Acces";
@@ -7,10 +8,12 @@ import styles from "./Home.module.css";
 
 function Home() {
   const [choice, setChoice] = useState("infos");
+  const [dataPro] = useState(useLoaderData());
+
   return (
     <div className={styles.homeContainer}>
-      <h1 className={styles.homeContainer__name}>Elodie Beauté</h1>
-      <p>Salon d'esthétique</p>
+      <h1 className={styles.homeContainer__name}>{dataPro.name}</h1>
+      <p>{dataPro.activity}</p>
       <img
         className={styles.homeContainer__image}
         src="src/assets/Elodie1.webp"
@@ -44,8 +47,14 @@ function Home() {
           </div>
         </nav>
         <div className={styles.homeInformations__contained}>
-          {choice === "infos" && <Infos />}
-          {choice === "acces" && <Acces />}
+          {choice === "infos" && (
+            <Infos
+              description={dataPro.description}
+              website={dataPro.website}
+              phone={dataPro.phone}
+            />
+          )}
+          {choice === "acces" && <Acces adresse={dataPro.adresse} />}
           {choice === "avis" && <Avis />}
         </div>
       </div>
