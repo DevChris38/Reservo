@@ -1,79 +1,50 @@
-## Concept
+# Checkpoint4 - Réservo
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
+## Le projet :
 
-## Setup & Use
+Un site de réservation de prestations pour tout type de professionnels (coiffeurs, barbiers, masseurs, ongleristes), sans fonctionnalités parasites, sans tergiversation. Il fait une chose ... et il le fait bien
 
-### Windows users
+## Présentation
 
-Be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
+Il y a deux catégories d'utilisateurs, les professionnels qui présentent leurs services et offrent des créneaux de réservation à leurs clients, et les clients qui réservent un créneau proposé par le professionnel.
 
-```
-git config --global core.eol lf
-git config --global core.autocrlf false
-```
+## Wireframe
 
-### Project Initialization
+![Capture d'écran 2024-01-22 104020](https://github.com/DevChris38/Checkpoint4/assets/124736625/b1094b89-f750-457b-95f6-3f2483d6c5b1)
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
-- Clone this repo, enter it
-- Run command `npm install`
-- Create environment files (`.env`) in both `backend` and `frontend`: you can copy `.env.sample` files as starters (**don't** delete them)
 
-### Available Commands
+![Capture d'écran 2024-01-22 103928](https://github.com/DevChris38/Checkpoint4/assets/124736625/a68ea48b-e28e-41c5-bb60-7780a04c5246)
 
-- `db:migrate` : Run the database migration script
-- `db:seed` : Run the database seed script
-- `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools (will be executed on every _commit_, and refuse unclean code)
+## Maquette
 
-## FAQ
+![image](https://github.com/DevChris38/Checkpoint4/assets/124736625/ee4d4376-7474-4965-9742-8aefb00646c0)
 
-### Tools
+(lien vers le figma :)[https://www.figma.com/file/bMIoC9BPvPDwV7aYwH08OW/Reservo?type=design&node-id=0%3A1&mode=design&t=5xHfpPS3mvjROCiR-1]
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
+## Prototype
 
-## Deployment with Traefik
 
-> ⚠️ Prerequisites : You must have installed and configured Traefik on your VPS beforehand.
-> https://github.com/WildCodeSchool/vps-traefik-starter-kit/
+https://github.com/DevChris38/Checkpoint4/assets/124736625/3cc971fd-019d-42af-8c30-c03b64bf65c8
 
-For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
 
-- SSH_HOST : IP address of your VPS
-- SSH_USER : SSH login to your VPS
-- SSH_PASSWORD : SSH connection password to your VPS
+## MCD
 
-And a public variable from the tab `/settings/variables/actions` :
 
-- PROJECT_NAME : the name of the project used to create the subdomain.
+![Capture d'écran 2024-01-30 084247](https://github.com/DevChris38/Checkpoint4/assets/124736625/c827b25e-80b8-4158-b9b5-630558cc447a)
 
-> ⚠️ Warning : underscores are not allowed. They can cause trouble with the let's encrypt certificate
 
-Use this same tab to add the other environment variables required for the project if any.
+## MLD
 
-Only the backend will be accessible. The root path `"/"` will redirect to the dist folder on your frontend. In order to allow that, please uncomment the line as explain on `backend/src/app.js` (Line 102).
-Because the backend will serve the front, the global variable VITE_BACKEND_URL will be set with an empty string.
 
-Your url will be ` https://${PROJECT-NAME}.${subdomain}.wilders.dev/`.
+![Capture d'écran 2024-01-30 084330](https://github.com/DevChris38/Checkpoint4/assets/124736625/bf39d2e1-4eb8-4a0d-9295-c4997e39d332)
 
-### About the database
 
-The database is automaticaly deployed with the name of your repo. During the build of the projet (`docker-entry.sh`), the `node migrate.js` command is executed in the backend. If you want to seed automaticaly your database using the `seed.js` script, replace the command _build_ on you `backend/package.json` by `node migrate.js && node seed.js`.
+## MPD
 
-### About public assets (pictures, fonts...)
 
-Don't use any public folder on your frontend. This folder won't be accessible online. You may move your public assets in the `backend/public` folder. Prefer [static assets](https://vitejs.dev/guide/assets) when possible.
+![MLD](https://github.com/DevChris38/Checkpoint4/assets/124736625/06f68e1c-4b1e-4a6f-9f0f-fb1e49142f4f)
 
-### About Logs
 
-If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
-Then, go on your specific project and run  `docker compose logs -t -f`.
+# Trello
+
+Pour organiser mon travail j'ai créé des User stories, regroupées dans un tableau Trello : https://trello.com/invite/b/2nzzbnMv/ATTI9326782f6d414cfd7c53eb2034e391f97BB86BE1/reservo
