@@ -1,0 +1,12 @@
+section {
+  margin: 5% 0;
+}
+
+.homeInformations__p__inline {
+  display: inline-block;
+}
+
+.homeInformations__p__inline__mail {
+  display: inline-block;
+  margin-left: 0.5ch;
+}

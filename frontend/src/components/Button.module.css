@@ -1,0 +1,13 @@
+button {
+  display: inline-block;
+  background-color: var(--color-green);
+  border-radius: 10px;
+  border: 4px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  padding: 1%;
+  width: clamp(150px, 15vw, 300px);
+  cursor: pointer;
+  margin: 5px;
+}
