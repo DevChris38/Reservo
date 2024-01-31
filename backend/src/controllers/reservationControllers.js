@@ -1,43 +1,20 @@
 // Import access to database tables
 const tables = require("../tables");
 
-/*
-// The B of BREAD - Browse (Read All) operation
-const browse = async (req, res, next) => {
-  try {
-    // Fetch all items from the database
-    const items = await tables.item.readAll();
-
-    // Respond with the items in JSON format
-    res.json(items);
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
-  }
-};
-
-// The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
-    // Fetch a specific item from the database based on the provided ID
-    const item = await tables.item.read(req.params.id);
+    const reservation = await tables.customer_service.read(req.params.id);
 
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
-    if (item == null) {
+    if (reservation === null) {
       res.sendStatus(404);
     } else {
-      res.json(item);
+      res.json(reservation);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
   }
 };
-
-// The E of BREAD - Edit (Update) operation
-// This operation is not yet implemented
-*/
 
 const create = async (req, res, next) => {
   // Extract the item data from the request body
@@ -55,10 +32,19 @@ const create = async (req, res, next) => {
   }
 };
 
-// The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
+const deletion = async (req, res, next) => {
+  try {
+    await tables.customer_service.delete(req.body);
 
-// Ready to export the controller functions
+    res.status(200).send("Le rendez-vous a bien été supprimé");
+  } catch (err) {
+    res.status(500).send(err.message);
+    next(err);
+  }
+};
+
 module.exports = {
   create,
+  read,
+  deletion,
 };

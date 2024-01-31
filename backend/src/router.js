@@ -15,6 +15,10 @@ router.get("/service/:id", serviceControllers.read);
 
 router.post("/reservation", reservationControllers.create);
 
+router.get("/reservation/:id", reservationControllers.read);
+
+router.delete("/reservation", reservationControllers.deletion);
+
 /* ************************************************************************* */
 
 module.exports = router;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import ButtonReservo from "../components/ButtonReservo";
 import Services from "../components/Services";
@@ -11,6 +11,31 @@ import Calendrier from "../components/Calendrier";
 function Home() {
   const [choice, setChoice] = useState("infos");
   const [dataPro] = useState(useLoaderData());
+  const [rdv, setRdv] = useState();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/reservation/1`)
+      .then((response) => response.json())
+      .then((parsedResponse) => setRdv(parsedResponse));
+  }, []);
+
+  const handleDelete = async (date, customer) => {
+    const response = await fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/reservation`,
+      {
+        method: "DELETE",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          date,
+          customer,
+        }),
+      }
+    );
+    return response.json();
+  };
 
   return (
     <div className={styles.homeContainer}>
@@ -76,6 +101,42 @@ function Home() {
         </div>
       ) : null}
       <h2 className={styles.rdvTitle}>Mes rendez-vous à venir</h2>
+      {rdv &&
+        rdv.map((reservation) => {
+          const event = new Date(reservation.date_beginning);
+          const formattedEvent = event.toLocaleDateString("fr-FR", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+          return (
+            <div
+              key={reservation.date_beginning}
+              className={styles.homeInformations__rdv}
+            >
+              <p className={styles.homeInformations__rdv__name}>
+                {reservation.service_name}
+              </p>
+              <p className={styles.homeInformations__rdv__event}>
+                {formattedEvent}
+              </p>
+              <div className={styles.homeInformations__rdv__buttons}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleDelete(
+                      reservation.date_beginning,
+                      reservation.customer_id
+                    );
+                    window.location.reload();
+                  }}
+                >
+                  supprimer
+                </button>
+                <button type="button">modifier</button>
+              </div>
+            </div>
+          );
+        })}
       <h2 className={styles.rdvTitle}>Mes rendes-vous passés</h2>
     </div>
   );

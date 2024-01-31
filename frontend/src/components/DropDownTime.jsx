@@ -59,7 +59,12 @@ function DropDownTime({ category, services, english, idService }) {
               className={styles.dropDownContainer__contenu__map}
               key={horaire}
             >
-              <ButtonReservo handleFunction={() => handleReservation(horaire)}>
+              <ButtonReservo
+                handleFunction={() => {
+                  handleReservation(horaire);
+                  window.location.reload();
+                }}
+              >
                 {splittedHeures[1]}
               </ButtonReservo>
             </div>
@@ -72,7 +77,7 @@ function DropDownTime({ category, services, english, idService }) {
 
 DropDownTime.propTypes = {
   category: PropTypes.string.isRequired,
-  services: PropTypes.arrayOf(PropTypes.string).isRequired,
+  services: PropTypes.arrayOf(PropTypes.number).isRequired,
   english: PropTypes.string.isRequired,
   idService: PropTypes.number.isRequired,
 };
