@@ -17,4 +17,9 @@
   margin: 0;
   font-family: "Baloo Tamma 2";
   background-color: var(--color-background);
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
