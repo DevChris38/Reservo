@@ -55,8 +55,8 @@ DROP TABLE IF EXISTS `customer_service` ;
 CREATE TABLE IF NOT EXISTS `customer_service` (
   `customer_id` INT NOT NULL,
   `service_id` INT NOT NULL,
-  `date_beginning` DATETIME NULL,
-  `date_end` DATETIME NULL,
+  `date_beginning` VARCHAR(100) NULL,
+  `date_end` VARCHAR(100) NULL,
   PRIMARY KEY (`customer_id`, `date_beginning`),
 
     FOREIGN KEY (`customer_id`)
