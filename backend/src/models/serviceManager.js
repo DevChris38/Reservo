@@ -9,7 +9,7 @@ class ServiceManager extends AbstractManager {
 
   async browse(id) {
     const [rows] = await this.database.query(
-      `SELECT duration, price, ${this.table}.name AS service_name, category.name AS category_name
+      `SELECT duration, price, ${this.table}.name AS service_name, ${this.table}.id AS service_id, category.name AS category_name
       from ${this.table}
       INNER JOIN category ON category.id = service.id_category
       where id_professional = ?

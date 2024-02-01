@@ -6,6 +6,7 @@ import Infos from "../components/Infos";
 import Acces from "../components/Acces";
 import Avis from "../components/Avis";
 import styles from "./Home.module.css";
+import Calendrier from "../components/Calendrier";
 
 function Home() {
   const [choice, setChoice] = useState("infos");
@@ -23,11 +24,20 @@ function Home() {
       <ButtonReservo handleFunction={() => setChoice("services")}>
         Prendre Rdv
       </ButtonReservo>
-      {choice === "services" ? (
+
+      {typeof choice === "number" && (
         <div className={styles.homeInformations}>
-          <Services id={dataPro.id} />
+          <Calendrier idPro={dataPro.id} idService={choice} />
         </div>
-      ) : (
+      )}
+
+      {choice === "services" && (
+        <div className={styles.homeInformations}>
+          <Services id={dataPro.id} choice={choice} setChoice={setChoice} />
+        </div>
+      )}
+
+      {choice === "infos" || choice === "acces" || choice === "avis" ? (
         <div className={styles.homeInformations}>
           <nav className={styles.homeInformations__nav}>
             <button
@@ -64,7 +74,7 @@ function Home() {
             {choice === "avis" && <Avis />}
           </div>
         </div>
-      )}
+      ) : null}
       <h2 className={styles.rdvTitle}>Mes rendez-vous à venir</h2>
       <h2 className={styles.rdvTitle}>Mes rendes-vous passés</h2>
     </div>

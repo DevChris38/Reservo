@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./DropDown.module.css";
 import ButtonReservo from "./ButtonReservo";
 
-function DropDown({ category, services }) {
+function DropDown({ category, services, setChoice }) {
   const [display, setDisplay] = useState(true);
 
   const displayedStyle = display ? "none" : "block";
@@ -39,7 +39,11 @@ function DropDown({ category, services }) {
                 <p className={styles.dropDownContainer__contenu__price}>
                   {service.price} €
                 </p>
-                <ButtonReservo handleFunction={() => {}}>
+                <ButtonReservo
+                  handleFunction={() => {
+                    setChoice(service.service_id);
+                  }}
+                >
                   Réserver
                 </ButtonReservo>
                 <p className={styles.dropDownContainer__contenu__duration}>
@@ -56,6 +60,7 @@ function DropDown({ category, services }) {
 
 DropDown.propTypes = {
   category: PropTypes.string.isRequired,
+  setChoice: PropTypes.func.isRequired,
   services: PropTypes.arrayOf(
     PropTypes.shape({
       duration: PropTypes.number.isRequired,

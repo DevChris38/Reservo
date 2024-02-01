@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./Services.module.css";
 import DropDown from "./DropDown";
 
-function Services({ id }) {
+function Services({ id, setChoice }) {
   const [arrayServices, setArrayServices] = useState("");
   const [renderedServices, setRenderedServices] = useState();
 
@@ -33,6 +33,7 @@ function Services({ id }) {
             key={service[0]}
             category={service[0]}
             services={service[1]}
+            setChoice={setChoice}
           />
         );
       })
@@ -47,6 +48,7 @@ function Services({ id }) {
 
 Services.propTypes = {
   id: PropTypes.number.isRequired,
+  setChoice: PropTypes.func.isRequired,
 };
 
 export default Services;

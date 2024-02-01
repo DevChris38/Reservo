@@ -1,0 +1,38 @@
+.dropDownContainer {
+  box-shadow: 0px 5px 10px 2px var(--color-shadow);
+  margin-bottom: 3%;
+  padding: 2%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.dropDownContainer__title {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 5%;
+}
+
+.dropDownContainer__button {
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.dropDownContainer__contenu__map {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.dropDownContainer__contenu__name {
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.dropDownContainer__contenu__reservation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

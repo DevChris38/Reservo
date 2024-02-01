@@ -1,6 +1,7 @@
 // Import access to database tables
 const tables = require("../tables");
 
+/*
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
@@ -36,15 +37,15 @@ const read = async (req, res, next) => {
 
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
+*/
 
-// The A of BREAD - Add (Create) operation
-const add = async (req, res, next) => {
+const create = async (req, res, next) => {
   // Extract the item data from the request body
-  const item = req.body;
+  const reservation = req.body;
 
   try {
     // Insert the item into the database
-    const insertId = await tables.item.create(item);
+    const insertId = await tables.customer_service.create(reservation);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
@@ -59,9 +60,5 @@ const add = async (req, res, next) => {
 
 // Ready to export the controller functions
 module.exports = {
-  browse,
-  read,
-  // edit,
-  add,
-  // destroy,
+  create,
 };

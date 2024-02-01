@@ -5,8 +5,9 @@
 // Import the manager modules responsible for handling data operations on the tables
 const ProManager = require("./models/proManager");
 const ServiceManager = require("./models/serviceManager");
+const ReservationManager = require("./models/reservationManager");
 
-const managers = [ProManager, ServiceManager];
+const managers = [ProManager, ServiceManager, ReservationManager];
 
 // Create an empty object to hold data managers for different tables
 const tables = {};
