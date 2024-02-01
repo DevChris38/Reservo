@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Button from "../components/Button";
+import ButtonReservo from "../components/ButtonReservo";
+import Services from "../components/Services";
 import Infos from "../components/Infos";
 import Acces from "../components/Acces";
 import Avis from "../components/Avis";
@@ -16,13 +17,19 @@ function Home() {
       <p>{dataPro.activity}</p>
       <img
         className={styles.homeContainer__image}
-        src="src/assets/Elodie1.webp"
+        src="/src/assets/Elodie1.webp"
         alt=""
       />
-      <Button>Prendre Rdv</Button>
-      <div className={styles.homeInformations}>
-        <nav className={styles.homeInformations__nav}>
-          <div>
+      <ButtonReservo handleFunction={() => setChoice("services")}>
+        Prendre Rdv
+      </ButtonReservo>
+      {choice === "services" ? (
+        <div className={styles.homeInformations}>
+          <Services id={dataPro.id} />
+        </div>
+      ) : (
+        <div className={styles.homeInformations}>
+          <nav className={styles.homeInformations__nav}>
             <button
               className={styles.homeInformations__button}
               type="button"
@@ -44,22 +51,22 @@ function Home() {
             >
               Avis
             </button>
+          </nav>
+          <div className={styles.homeInformations__contained}>
+            {choice === "infos" && (
+              <Infos
+                description={dataPro.description}
+                website={dataPro.website}
+                phone={dataPro.phone}
+              />
+            )}
+            {choice === "acces" && <Acces adresse={dataPro.adresse} />}
+            {choice === "avis" && <Avis />}
           </div>
-        </nav>
-        <div className={styles.homeInformations__contained}>
-          {choice === "infos" && (
-            <Infos
-              description={dataPro.description}
-              website={dataPro.website}
-              phone={dataPro.phone}
-            />
-          )}
-          {choice === "acces" && <Acces adresse={dataPro.adresse} />}
-          {choice === "avis" && <Avis />}
         </div>
-      </div>
-      <h2>Mes rendez-vous à venir</h2>
-      <h2>Mes rendes-vous passés</h2>
+      )}
+      <h2 className={styles.rdvTitle}>Mes rendez-vous à venir</h2>
+      <h2 className={styles.rdvTitle}>Mes rendes-vous passés</h2>
     </div>
   );
 }
