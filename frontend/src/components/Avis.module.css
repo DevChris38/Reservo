@@ -1,0 +1,30 @@
+.Avis__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Avis__container > h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.Avis__image {
+  width: 50%;
+}
+
+.Avis__liste {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 5%;
+}
+
+.Avis__imagePetite {
+  height: 2.5rem;
+}
+
+.Avis__liste > p {
+  margin-top: 2%;
+}
