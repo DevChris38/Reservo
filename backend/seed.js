@@ -90,22 +90,6 @@ const seed = async () => {
       })
     );
 
-    const valuesCustomerService = [
-      [1, 1, "2023-10-01 14:30:00", "2023-10-01 14:40:00"],
-      [1, 9, "2023-10-01 14:45:00", "2023-10-01 15:45:00"],
-      [1, 1, "2023-11-25 09:00:00", "2023-10-01 09:10:00"],
-      [1, 9, "2023-10-01 09:15:00", "2023-10-01 10:15:00"],
-    ];
-
-    await Promise.all(
-      valuesCustomerService.map(async (rowValues) => {
-        await database.query(
-          "INSERT INTO customer_service (customer_id, service_id, date_beginning, date_end) VALUES (?)",
-          [rowValues]
-        );
-      })
-    );
-
     const valuesImage = [
       ["Elodie1", 1],
       ["Elodie2", 1],

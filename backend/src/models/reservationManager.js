@@ -26,14 +26,26 @@ class ReservationManager extends AbstractManager {
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select service_id, customer_id, date_beginning, service.name AS service_name 
+      from ${this.table} 
+      INNER JOIN service ON service.id = ${this.table}.service_id
+      where customer_id = ?`,
       [id]
     );
 
     // Return the first row of the result, which represents the item
-    return rows[0];
+    return rows;
+  }
+
+  async delete(reservation) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE customer_id = ? AND date_beginning = ? `,
+      [reservation.customer, reservation.date]
+    );
+
+    // Return the ID of the newly inserted item
+    return result;
   }
 }
 

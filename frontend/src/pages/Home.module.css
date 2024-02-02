@@ -55,3 +55,28 @@
   width: 90vw;
   text-align: left;
 }
+
+.homeInformations__rdv {
+  box-shadow: 0px 5px 10px 2px var(--color-shadow);
+  width: 90%;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.homeInformations__rdv__name {
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.homeInformations__rdv__event {
+  width: 100%;
+}
+
+.homeInformations__rdv__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
