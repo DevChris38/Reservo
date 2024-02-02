@@ -48,3 +48,10 @@ https://github.com/DevChris38/Checkpoint4/assets/124736625/3cc971fd-019d-42af-8c
 # Trello
 
 Pour organiser mon travail j'ai créé des User stories, regroupées dans un tableau Trello : https://trello.com/invite/b/2nzzbnMv/ATTI9326782f6d414cfd7c53eb2034e391f97BB86BE1/reservo
+
+# Commandes pour lancer le projet :
+
+npm i
+npm run db:migrate
+npm run db:seed
+npm run dev
