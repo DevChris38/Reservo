@@ -6,8 +6,14 @@
 const ProManager = require("./models/proManager");
 const ServiceManager = require("./models/serviceManager");
 const ReservationManager = require("./models/reservationManager");
+const CustomerManager = require("./models/customerManager");
 
-const managers = [ProManager, ServiceManager, ReservationManager];
+const managers = [
+  ProManager,
+  ServiceManager,
+  ReservationManager,
+  CustomerManager,
+];
 
 // Create an empty object to hold data managers for different tables
 const tables = {};
