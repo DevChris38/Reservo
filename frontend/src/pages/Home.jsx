@@ -46,9 +46,11 @@ function Home() {
         src="/src/assets/Elodie1.webp"
         alt=""
       />
-      <ButtonReservo handleFunction={() => setChoice("services")}>
-        Prendre Rdv
-      </ButtonReservo>
+      {choice === "infos" || choice === "acces" || choice === "avis" ? (
+        <ButtonReservo handleFunction={() => setChoice("services")}>
+          Prendre Rdv
+        </ButtonReservo>
+      ) : null}
 
       {typeof choice === "number" && (
         <div className={styles.homeInformations}>
@@ -132,7 +134,18 @@ function Home() {
                 >
                   supprimer
                 </button>
-                <button type="button">modifier</button>
+                <button
+                  onClick={() => {
+                    handleDelete(
+                      reservation.date_beginning,
+                      reservation.customer_id
+                    );
+                    setChoice(reservation.service_id);
+                  }}
+                  type="button"
+                >
+                  modifier
+                </button>
               </div>
             </div>
           );
